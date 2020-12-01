@@ -37,7 +37,7 @@ class MinHeap:
         """
         return 'HEAP ' + str(self.heap)
 
-    def parent(self, i):
+    def parent_node(self, i):
         return (i - 1) // 2
 
     def right(self, i):
@@ -62,9 +62,9 @@ class MinHeap:
         i = self.heap.length() - 1
 
         while i > 0:
-            if self.heap.get_at_index(i) < self.heap.get_at_index(self.parent(i)):
-                self.heap.swap(i, self.parent(i))
-            i = self.parent(i)
+            if self.heap.get_at_index(i) < self.heap.get_at_index(self.parent_node(i)):
+                self.heap.swap(i, self.parent_node(i))
+            i = self.parent_node(i)
 
     def get_min(self) -> object:
         """
@@ -104,7 +104,7 @@ class MinHeap:
 
                 if self.left(i) < self.heap.length() and current_value > self.heap.get_at_index(self.left(i)):
                     lesser_child = self.left(i)
-                    current_value = self.heap.get_at_index(self.left(i))
+                    # current_value = self.heap.get_at_index(self.left(i))
 
                 if lesser_child is not None:
                     self.heap.swap(i, lesser_child)
@@ -121,7 +121,7 @@ class MinHeap:
         """
         self.heap = DynamicArray()
 
-        for i in range(da.length()):
+        for i in range(da.length() - 1, -1, -1):
             self.add(da.get_at_index(i))
 
 
