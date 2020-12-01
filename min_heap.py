@@ -53,26 +53,6 @@ class MinHeap:
         """
         return self.heap.length() == 0
 
-    def bubble_down(self, i):
-        while i < self.heap.length():
-
-            lesser_child = None
-            val = self.heap.get_at_index(i)
-
-            if self.right(i) < self.heap.length() and val > self.heap.get_at_index(self.right(i)):
-                lesser_child = self.right(i)
-                val = self.heap.get_at_index(self.right(i))
-
-            elif self.left(i) < self.heap.length() and val > self.heap.get_at_index(self.left(i)):
-                lesser_child = self.left(i)
-                val = self.heap.get_at_index(self.left(i))
-
-            if lesser_child is not None:
-                self.heap.swap(i, lesser_child)
-                i = lesser_child
-            else:
-                break
-
     def add(self, node: object) -> None:
         """
         TODO: Write this implementation
