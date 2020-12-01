@@ -172,11 +172,13 @@ class HashMap:
         """
         TODO: Write this implementation
         """
+        if new_capacity == 0:
+            return
 
         table = DynamicArray()
         keys = LinkedList()
 
-        for i in range(0, new_capacity):
+        for i in range(new_capacity):
             # append a linked list to each bucket capacity
             table.append(LinkedList())
         # move preexisting array and linked list into new table
@@ -190,6 +192,7 @@ class HashMap:
             else:
                 continue
 
+
         # reset the size and set capacity and buckets
         self.size = 0
         self.capacity = new_capacity
@@ -198,8 +201,6 @@ class HashMap:
         for node in keys:
             self.put(node.key, node.value)
 
-        if new_capacity == 0:
-            return
 
     def get_keys(self) -> DynamicArray:
         """
@@ -208,7 +209,7 @@ class HashMap:
 
         array = DynamicArray()
 
-        for i in range(0, self.buckets.length()):
+        for i in range(self.buckets.length()):
 
             for node in self.buckets.get_at_index(i):
                 array.append(node.key)
