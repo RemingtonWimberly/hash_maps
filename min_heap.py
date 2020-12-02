@@ -43,11 +43,11 @@ class MinHeap:
 
     def right_child(self, i):
         """ returns index of right child node"""
-        return 2 + i * 2
+        return i * 2 + 2
 
     def left_child(self, i):
         """ returns index of left child node"""
-        return 1 + i * 2
+        return i * 2 + 1
 
     def is_empty(self) -> bool:
         """
@@ -151,14 +151,9 @@ class MinHeap:
         """
         self.heap = DynamicArray()
 
-        for i in range(da.length() - 1):
+        for i in range(da.length()):
             self.heap.append(da.get_at_index(i))
-            # self.make_heap(self.heap.get_at_index(i))
-            self.min_heap()
-            # print(self.heap)
-            # if self.heap.get_at_index(i) < self.heap.get_at_index(self.parent_node(i)):
-            #     self.heap.swap(i, self.parent_node(i))
-            # # i = self.parent_node(i)
+
             # self.add(i)
 
 # BASIC TESTING
