@@ -124,11 +124,11 @@ class HashMap:
         # value = None
 
         if self.buckets.get_at_index(index).contains(key) != None:
-            value = self.buckets.get_at_index(index).contains(key).value
+            # value = self.buckets.get_at_index(index).contains(key).value
 
-        self.buckets.get_at_index(index).remove(key)
+            self.buckets.get_at_index(index).remove(key)
 
-        self.size -= 1
+            self.size -= 1
 
         # return value
 
