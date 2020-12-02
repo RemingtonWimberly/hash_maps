@@ -121,7 +121,7 @@ class HashMap:
 
         index = hash % self.capacity
 
-        value = None
+        # value = None
 
         if self.buckets.get_at_index(index).contains(key) != None:
             value = self.buckets.get_at_index(index).contains(key).value
@@ -130,7 +130,7 @@ class HashMap:
 
         self.size -= 1
 
-        return value
+        # return value
 
     def contains_key(self, key: str) -> bool:
         """
