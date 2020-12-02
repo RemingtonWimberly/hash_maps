@@ -172,7 +172,7 @@ class HashMap:
         """
         TODO: Write this implementation
         """
-        if new_capacity == 0:
+        if new_capacity <= 0:
             return
 
         table = DynamicArray()
