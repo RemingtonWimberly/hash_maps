@@ -40,11 +40,11 @@ class MinHeap:
     def parent_node(self, i):
         return (i - 1) // 2
 
-    def right(self, i):
-        return 2 + i * 2
-
-    def left(self, i):
+    def right_child(self, i):
         return 1 + i * 2
+
+    def left_child(self, i):
+        return i * 2
 
     def is_empty(self) -> bool:
         """
@@ -98,12 +98,12 @@ class MinHeap:
                 lesser_child = None
                 current_value = self.heap.get_at_index(i)
 
-                if self.right(i) < self.heap.length() and current_value > self.heap.get_at_index(self.right(i)):
-                    lesser_child = self.right(i)
-                    current_value = self.heap.get_at_index(self.right(i))
+                if self.right_child(i) < self.heap.length() and current_value > self.heap.get_at_index(self.right_child(i)):
+                    lesser_child = self.right_child(i)
+                    current_value = self.heap.get_at_index(self.right_child(i))
 
-                if self.left(i) < self.heap.length() and current_value > self.heap.get_at_index(self.left(i)):
-                    lesser_child = self.left(i)
+                if self.left_child(i) < self.heap.length() and current_value > self.heap.get_at_index(self.left_child(i)):
+                    lesser_child = self.left_child(i)
                     # current_value = self.heap.get_at_index(self.left(i))
 
                 if lesser_child is not None:
@@ -115,15 +115,47 @@ class MinHeap:
         return min_value
 
 
+    def is_leaf(self, position):
+        if (self.heap.length() // 2) <= position <= self.heap.length():
+            return True
+        return False
+
+    def make_heap(self, position):
+        left = self.left_child(position)
+        right = self.right_child(position)
+        if not self.is_leaf(position):
+
+            if self.heap.get_at_index(position) > left or self.heap.get_at_index(position) > right:
+
+                if left < right:
+                    self.heap.swap(self.heap.get_at_index(position), left)
+                    self.make_heap(left)
+
+                else:
+                    self.heap.swap(self.heap.get_at_index(position), right)
+                    self.make_heap(right)
+
+
+    def min_heap(self):
+
+        for i in range(self.heap.length()//2, 0 , -1):
+            self.make_heap(i)
+
     def build_heap(self, da: DynamicArray) -> None:
         """
         TODO: Write this implementation
         """
         self.heap = DynamicArray()
 
-        for i in range(da.length() - 1, -1, -1):
-            self.add(da.get_at_index(i))
-
+        for i in range(da.length() - 1):
+            self.heap.append(da.get_at_index(i))
+            # self.make_heap(self.heap.get_at_index(i))
+            self.min_heap()
+            # print(self.heap)
+            # if self.heap.get_at_index(i) < self.heap.get_at_index(self.parent_node(i)):
+            #     self.heap.swap(i, self.parent_node(i))
+            # # i = self.parent_node(i)
+            # self.add(i)
 
 # BASIC TESTING
 if __name__ == '__main__':
@@ -152,21 +184,21 @@ if __name__ == '__main__':
     print(h.get_min(), h.get_min())
 
 
-    # print("\nPDF - remove_min example 1")
-    # print("--------------------------")
-    # h = MinHeap([1, 10, 2, 9, 3, 8, 4, 7, 5, 6])
-    # while not h.is_empty():
-    #     print(h, end=' ')
-    #     print(h.remove_min())
-
-
-    print("\nPDF - build_heap example 1")
+    print("\nPDF - remove_min example 1")
     print("--------------------------")
-    da = DynamicArray([100, 20, 6, 200, 90, 150, 300])
-    h = MinHeap(['zebra', 'apple'])
-    print(h)
-    h.build_heap(da)
-    print(h)
-    da.set_at_index(0, 500)
-    print(da)
-    print(h)
+    h = MinHeap([1, 10, 2, 9, 3, 8, 4, 7, 5, 6])
+    while not h.is_empty():
+        print(h, end=' ')
+        print(h.remove_min())
+
+
+    # print("\nPDF - build_heap example 1")
+    # print("--------------------------")
+    # da = DynamicArray([100, 20, 6, 200, 90, 150, 300])
+    # h = MinHeap(['zebra', 'apple'])
+    # print(h)
+    # h.build_heap(da)
+    # print(h)
+    # da.set_at_index(0, 500)
+    # print(da)
+    # print(h)

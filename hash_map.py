@@ -121,16 +121,13 @@ class HashMap:
 
         index = hash % self.capacity
 
-        # value = None
 
         if self.buckets.get_at_index(index).contains(key) != None:
-            # value = self.buckets.get_at_index(index).contains(key).value
 
             self.buckets.get_at_index(index).remove(key)
 
             self.size -= 1
 
-        # return value
 
     def contains_key(self, key: str) -> bool:
         """
