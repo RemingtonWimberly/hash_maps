@@ -38,13 +38,16 @@ class MinHeap:
         return 'HEAP ' + str(self.heap)
 
     def parent_node(self, i):
+        """ returns index of parent node"""
         return (i - 1) // 2
 
     def right_child(self, i):
-        return 1 + i * 2
+        """ returns index of right child node"""
+        return 2 + i * 2
 
     def left_child(self, i):
-        return i * 2
+        """ returns index of left child node"""
+        return 1 + i * 2
 
     def is_empty(self) -> bool:
         """
@@ -55,7 +58,7 @@ class MinHeap:
 
     def add(self, node: object) -> None:
         """
-        TODO: Write this implementation
+        Adds a new object to the min heap maintaining the heap property
         """
         self.heap.append(node)
 
@@ -68,7 +71,7 @@ class MinHeap:
 
     def get_min(self) -> object:
         """
-        TODO: Write this implementation
+        returns an object with a minimum key without removing it from the heap
         """
         if self.is_empty():
             raise MinHeapException()
@@ -77,7 +80,7 @@ class MinHeap:
 
     def remove_min(self) -> object:
         """
-        TODO: Write this implementation
+        returns an object with a minimum key and removes it from the heap
         """
         min_value = self.get_min()
         end_value = self.heap.pop()
@@ -98,13 +101,14 @@ class MinHeap:
                 lesser_child = None
                 current_value = self.heap.get_at_index(i)
 
+                if self.left_child(i) < self.heap.length() and current_value > self.heap.get_at_index(self.left_child(i)):
+                    lesser_child = self.left_child(i)
+                    current_value = self.heap.get_at_index(self.left_child(i))
+
                 if self.right_child(i) < self.heap.length() and current_value > self.heap.get_at_index(self.right_child(i)):
                     lesser_child = self.right_child(i)
                     current_value = self.heap.get_at_index(self.right_child(i))
 
-                if self.left_child(i) < self.heap.length() and current_value > self.heap.get_at_index(self.left_child(i)):
-                    lesser_child = self.left_child(i)
-                    # current_value = self.heap.get_at_index(self.left(i))
 
                 if lesser_child is not None:
                     self.heap.swap(i, lesser_child)

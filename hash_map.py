@@ -58,7 +58,7 @@ class HashMap:
 
     def clear(self) -> None:
         """
-        TODO: Write this implementation
+        Clears the content of the hash map. It does not change underlying hash table capacity
         """
         empty_list = LinkedList()
 
@@ -70,7 +70,8 @@ class HashMap:
 
     def get(self, key: str) -> object:
         """
-        TODO: Write this implementation
+        Returns the value associated with the given key. If the key is not in the hash
+        map, the method returns None
         """
         if self.contains_key(key) == False:
             return None
@@ -115,7 +116,8 @@ class HashMap:
 
     def remove(self, key: str) -> None:
         """
-        TODO: Write this implementation
+        removes the given key and its associated value from the hash map. If a given
+        key is not in the hash map, the method does nothing
         """
         hash = self.hash_function(key)
 
@@ -131,7 +133,7 @@ class HashMap:
 
     def contains_key(self, key: str) -> bool:
         """
-        TODO: Write this implementation
+        Returns True if the given key is in the hash map, otherwise it returns False.
         """
         hash = self.hash_function(key)
         index = hash % self.capacity
@@ -146,7 +148,7 @@ class HashMap:
 
     def empty_buckets(self) -> int:
         """
-        TODO: Write this implementation
+        Returns a number of empty buckets in the hash table
         """
         empty_buckets = 0
         for i in range(0, self.capacity):
@@ -161,13 +163,13 @@ class HashMap:
 
     def table_load(self) -> float:
         """
-        TODO: Write this implementation
+        Returns the current hash table load factor
         """
         return self.size / self.capacity
 
     def resize_table(self, new_capacity: int) -> None:
         """
-        TODO: Write this implementation
+        changes the capacity of the internal hash table
         """
         if new_capacity <= 0:
             return
@@ -201,7 +203,7 @@ class HashMap:
 
     def get_keys(self) -> DynamicArray:
         """
-        TODO: Write this implementation
+        returns a DynamicArray that contains all keys stored in your hash map
         """
 
         array = DynamicArray()
