@@ -89,7 +89,7 @@ class MinHeap:
             raise MinHeapException()
         elif self.heap.length() == 0:
             # return the element at index 0 of length is zero
-            return None
+            return self.heap.get_at_index(0)
         else:
             # put the value at the end and have it bubble through the heap
             self.heap.set_at_index(0, end_value)
@@ -117,6 +117,7 @@ class MinHeap:
                     break
 
         return min_value
+
 
     def build_heap(self, da: DynamicArray) -> None:
         """
