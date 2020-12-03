@@ -118,33 +118,6 @@ class MinHeap:
 
         return min_value
 
-
-    def is_leaf(self, position):
-        if (self.heap.length() // 2) <= position <= self.heap.length():
-            return True
-        return False
-
-    def make_heap(self, position):
-        left = self.left_child(position)
-        right = self.right_child(position)
-        if not self.is_leaf(position):
-
-            if self.heap.get_at_index(position) > left or self.heap.get_at_index(position) > right:
-
-                if left < right:
-                    self.heap.swap(self.heap.get_at_index(position), left)
-                    self.make_heap(left)
-
-                else:
-                    self.heap.swap(self.heap.get_at_index(position), right)
-                    self.make_heap(right)
-
-
-    def min_heap(self):
-
-        for i in range(self.heap.length()//2, 0 , -1):
-            self.make_heap(i)
-
     def build_heap(self, da: DynamicArray) -> None:
         """
         TODO: Write this implementation
