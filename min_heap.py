@@ -85,11 +85,11 @@ class MinHeap:
         min_value = self.get_min()
         end_value = self.heap.pop()
 
-        if self.is_empty():
-            raise MinHeapException()
-        elif self.heap.length() == 0:
+        # if self.is_empty():
+        #     raise MinHeapException()
+        if self.heap.length() == 0:
             # return the element at index 0 of length is zero
-            return self.heap.get_at_index(0)
+            return min_value
         else:
             # put the value at the end and have it bubble through the heap
             self.heap.set_at_index(0, end_value)
