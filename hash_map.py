@@ -1,7 +1,6 @@
 # Course: CS261 - Data Structures
 # Assignment: 5
-# Student:
-# Description:
+# Student: Remington Wimberly
 
 
 # Import pre-written DynamicArray and LinkedList classes
