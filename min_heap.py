@@ -1,6 +1,6 @@
 # Course: CS261 - Data Structures
 # Assignment: 5
-# Student:
+# Student: Remington Wimberly
 # Description:
 
 
